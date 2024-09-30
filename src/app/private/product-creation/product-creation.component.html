@@ -1,0 +1,16 @@
+<div class="app-product-creation">
+    <form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()">
+        <app-form-input *ngFor="let formInput of formInputs" [formGroup]="productFormGroup"
+            [controlName]="formInput.controlName" [label]="formInput.label"
+            [errorMsg]="formInput.errorMsg"></app-form-input>
+        <app-form-button type="submit" [label]="'PRODUCT_SUBMISSION_BUTTON'"
+            [disabled]="!productFormGroup.valid"></app-form-button>
+    </form>
+    <span *ngIf="submitMessage.display" [attr.app-state]="submitMessage.state">{{submitMessage.message |
+        language}}</span>
+    <ul>
+        <li *ngFor="let productItem of productList">
+            <app-product-item [productItem]="productItem"></app-product-item>
+        </li>
+    </ul>
+</div>

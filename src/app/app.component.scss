@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+header {
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+}
+
+main {
+  min-width: 0;
+  flex: 1 1 0%;
+  background-color: rgb(193, 223, 241);
+  padding: 40px 10%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+}

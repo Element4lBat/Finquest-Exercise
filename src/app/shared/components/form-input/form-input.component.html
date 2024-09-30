@@ -1,0 +1,7 @@
+<div class="app-form-input" [formGroup]="formGroup">
+    <label for="{{controlName}}">{{label | language}}</label>
+    <input id="{{controlName}}" formControlName="{{controlName}}">
+    <strong *ngIf="errorMsg && formGroup.get(controlName)?.invalid && formGroup.get(controlName)?.touched">
+        {{errorMsg | language}}
+    </strong>
+</div>

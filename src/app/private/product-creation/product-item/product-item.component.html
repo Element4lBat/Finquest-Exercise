@@ -1,0 +1,7 @@
+<div class="app-product-item">
+    <h4>{{productItem.name}}</h4>
+    <app-form-button (clicked)="displayDescription = !displayDescription" *ngIf="productItem.description"
+        [label]="'COMMON_TOGGLE_DESCRIPTION'"></app-form-button>
+    <p *ngIf="displayDescription">{{productItem.description}}</p>
+    <p>{{productItem.price | currency: 'EUR' : 'symbol' : '1.0-2'}}</p>
+</div>
