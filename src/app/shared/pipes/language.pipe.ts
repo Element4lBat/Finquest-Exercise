@@ -1,7 +1,4 @@
-import {
-  Pipe,
-  PipeTransform,
-} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 import { DICTIONARY } from '../../constants/language.constants';
 
@@ -15,7 +12,7 @@ export class LanguagePipe implements PipeTransform {
 
     if (args) {
       Object.keys(args).forEach(
-        (key: string) => (result = result.replace(key, args[key]))
+        (key: string) => (result = result.replace(`{{${key}}}`, args[key]))
       );
     }
 

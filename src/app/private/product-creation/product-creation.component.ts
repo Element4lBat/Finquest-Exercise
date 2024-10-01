@@ -35,6 +35,7 @@ import { IProductItem } from './product-item/product-item.model';
 export class ProductCreationComponent implements OnInit, OnDestroy {
   private hasReset = false;
   private productChangesSubscription!: Subscription;
+  private minNameLength = 3;
 
   productFormGroup!: FormGroup;
   submitMessage: {
@@ -52,17 +53,20 @@ export class ProductCreationComponent implements OnInit, OnDestroy {
     {
       controlName: 'name',
       label: 'INPUT_NAME_LABEL',
-      errorMsg: 'INPUT_NAME_ERROR',
+      errorMsg: {
+        label: 'INPUT_NAME_ERROR',
+        options: { max: this.minNameLength },
+      },
     },
     {
       controlName: 'description',
       label: 'INPUT_DESCRIPTION_LABEL',
-      errorMsg: '',
+      errorMsg: { label: '' },
     },
     {
       controlName: 'price',
       label: 'INPUT_PRICE_LABEL',
-      errorMsg: 'INPUT_PRICE_ERROR',
+      errorMsg: { label: 'INPUT_PRICE_ERROR' },
     },
   ];
 
@@ -74,7 +78,10 @@ export class ProductCreationComponent implements OnInit, OnDestroy {
 
   private initProductFormGroup() {
     this.productFormGroup = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: [
+        '',
+        [Validators.required, Validators.minLength(this.minNameLength)],
+      ],
       description: ['', Validators.maxLength(100)],
       price: [
         '',

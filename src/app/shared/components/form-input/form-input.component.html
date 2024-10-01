@@ -2,6 +2,6 @@
     <label for="{{controlName}}">{{label | language}}</label>
     <input id="{{controlName}}" formControlName="{{controlName}}">
     <strong *ngIf="errorMsg && formGroup.get(controlName)?.invalid && formGroup.get(controlName)?.touched">
-        {{errorMsg | language}}
+        {{errorMsg.label | language: errorMsg.options}}
     </strong>
 </div>

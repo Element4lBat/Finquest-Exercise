@@ -15,6 +15,8 @@ import { LanguagePipe } from '../../pipes/language.pipe';
 export class FormInputComponent {
   @Input() controlName = '';
   @Input() label = '';
-  @Input() errorMsg = '';
+  @Input() errorMsg: { label: string; options?: Record<string, any> } = {
+    label: '',
+  };
   @Input() formGroup!: FormGroup;
 }
